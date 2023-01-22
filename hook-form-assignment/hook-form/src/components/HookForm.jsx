@@ -12,7 +12,8 @@ const HookForm = (props) => {
             confirmPass:''
         })
 
-        // const [formDataError, setFormDataError] = useState ({
+    // Shows error if inputs are incorrect
+        // const [error, setError] = useState ({
         //     firstNameError: '',
         //     lastNameError: '',
         //     emailError: '',
@@ -32,49 +33,53 @@ const HookForm = (props) => {
 
 
     return (
-        <div>
+        <div id='formInput'>
             <h1>Welcome!</h1>
             <form onSubmit={handleSubmit}>
-
+                <div class="label" >
                 <label>First Name: </label>
                 <input type = "text" name="firstName" onChange={onChangeHandler} />
                     {
-                        formData.firstName.length < 2 ?
-                        <p>Must be at least 2 characters</p>:
-                        null 
+                        formData.firstName.length !== 1  ?
+                        null: <p>Must be at least 2 characters</p>
                     }
+                </div>
 
+                <div class="label" >
                 <label>Last Name:</label>
                 <input type ="text"  name="lastName" onChange={onChangeHandler} />
                     {
-                        formData.lastName.length < 2 ?
-                        <p>Must be at least 2 characters</p>:
-                        null
+                        formData.lastName.length !== 1  ?
+                        null: <p>Must be at least 2 characters</p>
                     }
+                </div>    
 
+                <div class="label" >
                 <label>Email:</label>
                 <input type ="email"  name="email" onChange={onChangeHandler} />
                     {
-                        formData.email.length < 5 ?
-                        <p>Must be at least 5 characters</p>:
-                        null
+                        formData.email.length !== 1 ?
+                        null: <p>Must be at least 2 characters</p>
                     }
+                </div>
 
+                <div class="label" >
                 <label>Password:</label>
                 <input type ="password"  name="password" onChange={onChangeHandler}  />
                     {
-                        formData.password.length < 8 ? 
-                        <p>Password must be 8 or more characters</p>:
-                        null 
+                        formData.password.length !== 7 ?
+                        null : <p>Password must be 8 or more characters</p>
                     }
-
+                </div>
+                
+                <div class="label" >
                 <label>Confirm Password:</label>
                 <input type ="password"  name="confirmPass" onChange={onChangeHandler}  />
                     {
-                        formData.password.length !== formData.confirmPass.length ?
-                        <p>Passwords must match</p>:
-                        null
+                        formData.confirmPass.length !== formData.password.length ?
+                        null : <p>Passwords must match</p> 
                     }
+                </div>
 
                 <button>Submit</button>
             </form>
